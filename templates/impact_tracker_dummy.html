@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniVerge - Impact Tracker (Dummy)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for a premium look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for fonts and general layout */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7fafc; /* Very light background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: #1a202c;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+        .metric-value {
+            font-size: 2.5rem; /* Large numbers for metrics */
+            font-weight: 700;
+            color: #4a5568;
+        }
+        .metric-label {
+            font-size: 1rem;
+            color: #718096;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        .chart-placeholder {
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-weight: 500;
+            border: 1px dashed #cbd5e0;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar (Simplified for dummy page) -->
+    <nav class="bg-white p-4 shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto flex justify-between items-center max-w-7xl">
+            <div class="text-gray-900 text-3xl font-extrabold tracking-tight">UniVerge<span class="text-indigo-500">.</span></div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium">Dashboard</a>
+                <a href="#" class="text-indigo-600 font-bold text-lg">Impact Tracker</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-4 md:p-8 relative z-10 max-w-7xl">
+
+        <h1 class="text-4xl font-extrabold text-center mb-10 text-gray-900">📊 Impact Tracker Dashboard</h1>
+        <p class="text-center text-gray-700 mb-12 max-w-3xl mx-auto text-lg leading-relaxed">
+            Gain insights into the real-time impact of UniVerge's mentorship and referral programs.
+        </p>
+
+        <!-- Key Metrics Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="card p-6 text-center">
+                <div class="text-indigo-500 text-4xl mb-3"><i class="fas fa-users"></i></div>
+                <div class="metric-value">1,250</div>
+                <div class="metric-label">Total Mentorships</div>
+            </div>
+            <div class="card p-6 text-center">
+                <div class="text-green-500 text-4xl mb-3"><i class="fas fa-check-circle"></i></div>
+                <div class="metric-value">820</div>
+                <div class="metric-label">Successful Referrals</div>
+            </div>
+            <div class="card p-6 text-center">
+                <div class="text-purple-500 text-4xl mb-3"><i class="fas fa-user-graduate"></i></div>
+                <div class="metric-value">95%</div>
+                <div class="metric-label">Student Engagement Rate</div>
+            </div>
+            <div class="card p-6 text-center">
+                <div class="text-yellow-500 text-4xl mb-3"><i class="fas fa-handshake"></i></div>
+                <div class="metric-value">30+</div>
+                <div class="metric-label">Active Alumni Regions</div>
+            </div>
+        </section>
+
+        <!-- Chart Placeholders Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Mentorship Trends Over Time</h2>
+                <div class="chart-placeholder">
+                    <p>Placeholder for Line Chart (e.g., Mentorships per Month)</p>
+                </div>
+            </div>
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Referral Success Rate</h2>
+                <div class="chart-placeholder">
+                    <p>Placeholder for Bar Chart (e.g., Referrals by Industry)</p>
+                </div>
+            </div>
+            <div class="card p-6 lg:col-span-2">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Student Demographics & Engagement</h2>
+                <div class="chart-placeholder h-64">
+                    <p>Placeholder for Pie Chart / Heatmap (e.g., Active Users by Region)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Insights Section -->
+        <section class="card p-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Key Insights & Recommendations</h2>
+            <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                <li><span class="font-semibold text-indigo-600">Growth in Rural Outreach:</span> Mentorship connections from rural areas increased by 15% last quarter, indicating successful targeted campaigns.</li>
+                <li><span class="font-semibold text-indigo-600">High Alumni Engagement:</span> Over 70% of registered alumni have actively participated in mentorship or referral activities.</li>
+                <li><span class="font-semibold text-indigo-600">Skill Gap Identification:</span> Data suggests a high demand for mentorship in AI/ML and Cybersecurity fields among students.</li>
+                <li><span class="font-semibold text-indigo-600">Next Steps:</span> Focus on expanding alumni network in underrepresented regions and developing more specialized career path resources.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer (Simplified for dummy page) -->
+    <footer class="bg-gray-100 text-gray-600 py-5 mt-10 shadow-inner border-t border-gray-200">
+        <div class="container mx-auto text-center max-w-7xl">
+            <p>&copy; 2025 UniVerge. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

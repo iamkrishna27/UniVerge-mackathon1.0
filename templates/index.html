@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniVerge - Your Future, Simplified</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for a premium look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file for custom styles and "user free" aesthetics -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white p-4 shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto flex justify-between items-center max-w-7xl">
+            <div class="text-gray-900 text-3xl font-extrabold tracking-tight">UniVerge<span class="text-indigo-500">.</span></div>
+            <div id="navbar-links" class="flex items-center space-x-6">
+                <button onclick="showPage('landing')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group navbar-link-group">Home
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-dashboard" onclick="showPage('dashboard')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Dashboard
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-profile" onclick="showPage('profile')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Profile
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-storyboard" onclick="showPage('storyboard')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Storyboards
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-impact-tracker" onclick="showPage('impact-tracker')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Impact Tracker
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-quick-connect" onclick="showPage('quick-connect')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Quick Connect
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-resource-bank" onclick="showPage('resource-bank')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Resource Bank
+                    <span class="link-underline"></span>
+                </button>
+                <!-- NEW: Cultural Confidence Corner Button -->
+                <button id="nav-confidence-corner" onclick="showPage('confidence-corner')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200 text-lg font-medium relative group hidden navbar-link-group">Confidence Corner
+                    <span class="link-underline"></span>
+                </button>
+                <button id="nav-auth" onclick="showPage('auth')" class="btn-primary text-white px-5 py-2.5 rounded-lg shadow-md transition-all duration-300">Login / Register</button>
+                <button id="nav-logout" onclick="handleLogout()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-lg shadow-md transition-all duration-300 hidden">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Message Display Area -->
+    <div id="message-area" class="container mx-auto mt-6 px-4 max-w-7xl"></div>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-4 md:p-8 relative z-10 max-w-7xl">
+
+        <!-- Landing Page -->
+        <div id="landing-page" class="page-content active-page hero-background rounded-xl shadow-lg text-center flex flex-col items-center justify-center transform scale-95 opacity-0">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-sm animate-pop-in">
+                Your Future, Unlocked.
+            </h1>
+            <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-3xl opacity-0 animate-pop-in animation-delay-300">
+                Seamlessly connect with alumni, discover clear career paths, and build a trusted network.
+            </p>
+            <div class="mb-12 w-full max-w-5xl opacity-0 animate-pop-in animation-delay-600">
+                <img src="https://placehold.co/1200x600/e0e7ff/3730a3?text=UniVerge+Intuitive+Dashboard" alt="UniVerge Platform Overview" class="rounded-xl shadow-xl border border-indigo-200 w-full transform hover:scale-100 transition-transform duration-300">
+            </div>
+            <button onclick="showPage('auth', false)" class="btn-primary text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold transition-all duration-300 transform hover:scale-105 opacity-0 animate-pop-in animation-delay-900">
+                Get Started <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            <p class="text-base md:text-lg text-indigo-100 mt-8 opacity-0 animate-pop-in animation-delay-1200">
+                Empowering every student, effortlessly.
+            </p>
+        </div>
+
+        <!-- Auth Page (Login/Register) -->
+        <div id="auth-page" class="page-content flex items-center justify-center p-4">
+            <div class="card p-8 w-full max-w-md animate-pop-in">
+                <h2 id="auth-title" class="text-3xl font-extrabold text-center mb-8">Login to UniVerge</h2>
+                <form id="auth-form" class="space-y-5">
+                    <div>
+                        <label for="auth-email" class="block text-base font-semibold text-gray-700 mb-2">Email</label>
+                        <input type="email" id="auth-email" class="w-full text-base" placeholder="your@email.com" required>
+                    </div>
+                    <div>
+                        <label for="auth-password" class="block text-base font-semibold text-gray-700 mb-2">Password</label>
+                        <input type="password" id="auth-password" class="w-full text-base" placeholder="••••••••" required>
+                    </div>
+                    <div id="register-fields" class="space-y-5 hidden">
+                        <div>
+                            <label for="auth-name" class="block text-base font-semibold text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="auth-name" class="w-full text-base" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="auth-userType" class="block text-base font-semibold text-gray-700 mb-2">I am a...</label>
+                            <select id="auth-userType" class="w-full text-base">
+                                <option value="student">Student (First-Gen / Rural)</option>
+                                <option value="alumni">Alumni</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="auth-hometown" class="block text-base font-semibold text-gray-700 mb-2">Hometown/Region</label>
+                            <input type="text" id="auth-hometown" class="w-full text-base" placeholder="Ruralville">
+                        </div>
+                        <div>
+                            <label for="auth-language" class="block text-base font-semibold text-gray-700 mb-2">Primary Language</label>
+                            <input type="text" id="auth-language" class="w-full text-base" placeholder="English">
+                        </div>
+                    </div>
+                    <button type="submit" id="auth-submit-btn" class="w-full py-3 px-6 rounded-lg shadow-md text-lg font-bold btn-primary">Login</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <button id="toggle-auth-mode" class="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition-colors duration-200">Need an account? Register</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page-content p-6 hidden">
+            <h1 id="dashboard-welcome" class="text-4xl font-extrabold text-center mb-10 animate-pop-in"></h1>
+
+            <!-- Introduction Section -->
+            <section class="card p-6 mb-8 animate-pop-in animation-delay-200">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-info-circle mr-3 text-indigo-500"></i> Your UniVerge Overview</h2>
+                <p class="text-gray-700 text-base leading-relaxed">
+                    UniVerge is designed to make connections effortless for first-gen and rural-background students. Get personalized guidance, build your network, and find inspiring stories.
+                </p>
+            </section>
+
+            <!-- Key Features Section -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div id="student-matching-section" class="stat-card animate-pop-in animation-delay-400 hidden">
+                    <h2 class="text-xl font-bold mb-3 flex items-center justify-center">🎓 Alumni Roots Matching</h2>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Connect easily with alumni who understand your journey.
+                    </p>
+                    <button onclick="simulateMatch()" class="btn-primary text-white px-5 py-2.5 rounded-lg text-sm w-full">
+                        Find a Match
+                    </button>
+                    <div id="matching-result" class="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg text-left hidden animate-pop-in">
+                        <h3 class="text-lg font-semibold text-purple-800 mb-1">Simulated Match:</h3>
+                        <p id="match-details" class="text-gray-700 text-sm"></p>
+                        <p class="text-gray-500 text-xs mt-1">(Demo functionality. AI powers real matches!)</p>
+                        <button id="connect-match-btn" class="mt-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200 hidden">
+                            Connect Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stat-card animate-pop-in animation-delay-500">
+                    <h2 class="text-xl font-bold mb-3 flex items-center justify-center">🔗 Trust System</h2>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Verified referrals ensure every connection is reliable.
+                    </p>
+                    <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-center text-blue-800 font-medium text-sm text-center">
+                        <i class="fas fa-shield-alt mr-2 text-base"></i> Blockchain-backed credibility.
+                    </div>
+                </div>
+
+                <div id="student-career-path-section" class="stat-card animate-pop-in animation-delay-600 hidden">
+                    <h2 class="text-xl font-bold mb-3 flex items-center justify-center">🧠 Career Pathfinder</h2>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Get clear, AI-powered guidance for your career journey.
+                    </p>
+                    <button onclick="showMessage('This would launch the AI Career Pathfinder! (Demo functionality)', 'info')" class="btn-primary text-white px-5 py-2.5 rounded-lg text-sm w-full">
+                        Explore Paths
+                    </button>
+                </div>
+
+                <div class="stat-card animate-pop-in animation-delay-700 lg:col-span-full">
+                    <h2 class="text-xl font-bold mb-3 flex items-center justify-center">📊 Impact Tracker</h2>
+                    <p class="text-sm text-gray-600 mb-4">
+                        See the real-time impact of mentorship and referrals.
+                    </p>
+                    <div class="p-3 bg-yellow-50 border border-yellow-200 rounded-lg flex items-center justify-center text-yellow-800 font-medium text-sm text-center">
+                        <i class="fas fa-chart-pie mr-2 text-base"></i> Clear insights for growth.
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page-content p-6 hidden">
+            <h1 class="text-4xl font-extrabold text-center mb-8 animate-pop-in">Your Profile</h1>
+            <div class="card p-8 max-w-2xl mx-auto animate-pop-in animation-delay-200">
+                <form id="profile-edit-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 text-base">
+                    <div class="flex flex-col">
+                        <label class="font-bold text-gray-700 mb-2">Name:</label>
+                        <div id="profile-name" class="text-gray-900 bg-gray-50 p-2.5 rounded-md border border-gray-200 font-medium"></div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="font-bold text-gray-700 mb-2">Email:</label>
+                        <div id="profile-email" class="text-gray-900 bg-gray-50 p-2.5 rounded-md border border-gray-200 font-medium"></div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="font-bold text-gray-700 mb-2">User Type:</label>
+                        <div id="profile-type" class="text-gray-900 capitalize bg-gray-50 p-2.5 rounded-md border border-gray-200 font-medium"></div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="edit-hometown" class="font-bold text-gray-700 mb-2">Hometown/Region:</label>
+                        <input type="text" id="edit-hometown" class="w-full text-base">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="edit-language" class="font-bold text-gray-700 mb-2">Primary Language:</label>
+                        <input type="text" id="edit-language" class="w-full text-base">
+                    </div>
+
+                    <div id="edit-profession-row" class="hidden flex flex-col md:col-span-1">
+                        <label for="edit-profession" class="font-bold text-gray-700 mb-2">Profession:</label>
+                        <input type="text" id="edit-profession" class="w-full text-base">
+                    </div>
+                    
+                    <div class="col-span-full mt-6 text-center">
+                        <button type="submit" class="btn-primary text-white px-7 py-3 rounded-lg shadow-md text-lg font-bold transition-colors duration-200">
+                            Save Changes <i class="fas fa-save ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Storyboard Page -->
+        <div id="storyboard-page" class="page-content p-6 hidden">
+            <h1 class="text-4xl font-extrabold text-center mb-6 animate-pop-in">
+                ✨ Alumni Journeys: Real Stories, Real Inspiration
+            </h1>
+            <p class="text-gray-700 text-center mb-8 max-w-3xl mx-auto text-base leading-relaxed animate-pop-in animation-delay-200">
+                Discover inspiring paths taken by alumni who share similar roots. Their experiences can light up your own journey.
+            </p>
+
+            <div id="share-journey-section" class="card p-8 max-w-3xl mx-auto mb-10 hidden animate-pop-in animation-delay-400">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center flex items-center justify-center"><i class="fas fa-share-alt mr-3"></i> Share Your Story</h2>
+                <form id="share-journey-form" class="space-y-5">
+                    <div>
+                        <label for="story-title" class="block text-gray-700 text-base font-bold mb-2">Story Title:</label>
+                        <input type="text" id="story-title" class="w-full text-base" placeholder="e.g., My Journey from Village to Startup Founder">
+                    </div>
+                    <div>
+                        <label for="story-description" class="block text-gray-700 text-base font-bold mb-2">Your Inspiring Journey:</label>
+                        <textarea id="story-description" rows="6" class="w-full text-base" placeholder="Share your challenges, triumphs, and advice."></textarea>
+                    </div>
+                    <div>
+                        <label for="story-image-url" class="block text-gray-700 text-base font-bold mb-2">Image URL (Optional):</label>
+                        <input type="url" id="story-image-url" class="w-full text-base" placeholder="Link to a relevant image">
+                    </div>
+                    <div class="text-center mt-6">
+                        <button type="submit" class="btn-primary text-white px-8 py-3.5 rounded-lg shadow-md text-lg font-bold transition-all duration-300">
+                            Submit My Story <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="storyboards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Storyboard cards will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Impact Tracker Page Content -->
+        <div id="impact-tracker-page" class="page-content p-6 hidden">
+            <!-- Content for this page will be loaded dynamically by script.js -->
+        </div>
+
+        <!-- Quick Connect Page Content -->
+        <div id="quick-connect-page" class="page-content p-6 hidden">
+            <h1 class="text-4xl font-extrabold text-center mb-8 text-gray-900 animate-pop-in">⚡ Quick Connect Mentorship</h1>
+            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto text-lg leading-relaxed animate-pop-in animation-delay-200">
+                Alumni can offer instant office hours, and students can book them without delay.
+            </p>
+
+            <!-- Alumni Section: Create Slots -->
+            <section id="alumni-slots-section" class="card p-8 mb-10 hidden animate-pop-in animation-delay-400">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center flex items-center justify-center"><i class="fas fa-calendar-plus mr-3"></i> Offer Mentorship Slots</h2>
+                <form id="create-slot-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                    <div>
+                        <label for="slot-date" class="block text-base font-semibold text-gray-700 mb-2">Date:</label>
+                        <input type="date" id="slot-date" class="w-full text-base" required>
+                    </div>
+                    <div>
+                        <label for="slot-time" class="block text-base font-semibold text-gray-700 mb-2">Time:</label>
+                        <input type="time" id="slot-time" class="w-full text-base" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="slot-duration" class="block text-base font-semibold text-gray-700 mb-2">Duration (minutes):</label>
+                        <select id="slot-duration" class="w-full text-base">
+                            <option value="15">15 minutes</option>
+                            <option value="30" selected>30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">60 minutes</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 text-center mt-6">
+                        <button type="submit" class="btn-primary text-white px-8 py-3.5 rounded-lg shadow-md text-lg font-bold">
+                            Create Slot <i class="fas fa-plus-circle ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Alumni/Student Section: My Slots -->
+            <section id="my-slots-section" class="card p-8 mb-10 hidden animate-pop-in animation-delay-500">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><i class="fas fa-clipboard-list mr-3"></i> My Mentorship Slots</h2>
+                <div id="my-slots-list" class="space-y-4">
+                    <p class="text-center text-gray-600">Loading your slots...</p>
+                </div>
+            </section>
+
+            <!-- Student Section: Available Slots -->
+            <section id="available-slots-section" class="card p-8 hidden animate-pop-in animation-delay-600">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><i class="fas fa-calendar-check mr-3"></i> Available Mentorship Slots</h2>
+                <div id="available-slots-list" class="space-y-4">
+                    <p class="text-center text-gray-600">No slots available right now. Check back later!</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Resource Bank Page Content -->
+        <div id="resource-bank-page" class="page-content p-6 hidden">
+            <h1 class="text-4xl font-extrabold text-center mb-8 text-gray-900 animate-pop-in">📚 Alumni Resource Bank</h1>
+            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto text-lg leading-relaxed animate-pop-in animation-delay-200">
+                Access curated resources like interview questions, resume templates, and job portals, shared by alumni.
+            </p>
+
+            <!-- Alumni Section: Upload Resource -->
+            <section id="alumni-resource-upload-section" class="card p-8 mb-10 hidden animate-pop-in animation-delay-400">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center flex items-center justify-center"><i class="fas fa-upload mr-3"></i> Upload a New Resource</h2>
+                <form id="upload-resource-form" class="space-y-5">
+                    <div>
+                        <label for="resource-title" class="block text-base font-semibold text-gray-700 mb-2">Resource Title:</label>
+                        <input type="text" id="resource-title" class="w-full text-base" placeholder="e.g., Top 50 Interview Questions for Software Engineers" required>
+                    </div>
+                    <div>
+                        <label for="resource-url" class="block text-base font-semibold text-gray-700 mb-2">Resource URL:</label>
+                        <input type="url" id="resource-url" class="w-full text-base" placeholder="e.g., https://example.com/interview-questions" required>
+                    </div>
+                    <div>
+                        <label for="resource-category" class="block text-base font-semibold text-gray-700 mb-2">Category:</label>
+                        <select id="resource-category" class="w-full text-base" required>
+                            <option value="">Select a Category</option>
+                            <option value="Interview Questions">Interview Questions</option>
+                            <option value="Resume Templates">Resume Templates</option>
+                            <option value="Course Playlists">Course Playlists</option>
+                            <option value="Job Portals">Region-specific Job Portals</option>
+                            <option value="Career Advice">Career Advice</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="resource-description" class="block text-base font-semibold text-gray-700 mb-2">Description (Optional):</label>
+                        <textarea id="resource-description" rows="3" class="w-full text-base" placeholder="Briefly describe what this resource offers."></textarea>
+                    </div>
+                    <div class="text-center mt-6">
+                        <button type="submit" class="btn-primary text-white px-8 py-3.5 rounded-lg shadow-md text-lg font-bold">
+                            Upload Resource <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Resource List Section -->
+            <section id="resource-list-section" class="card p-8 animate-pop-in animation-delay-500">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><i class="fas fa-book-open mr-3"></i> Available Resources</h2>
+                <div id="resources-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <p class="text-center text-gray-600 col-span-full">Loading resources...</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- NEW: Cultural Confidence Corner Page Content -->
+        <div id="confidence-corner-page" class="page-content p-6 hidden">
+            <h1 class="text-4xl font-extrabold text-center mb-8 text-gray-900 animate-pop-in">🗣️ Cultural Confidence Corner</h1>
+            <p class="text-center text-gray-700 mb-10 max-w-3xl mx-auto text-lg leading-relaxed animate-pop-in animation-delay-200">
+                A safe space for first-gen and rural students to share experiences anonymously and build confidence.
+            </p>
+
+            <!-- Post New Message Section -->
+            <section class="card p-8 mb-10 animate-pop-in animation-delay-400">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center flex items-center justify-center"><i class="fas fa-feather-alt mr-3"></i> Share Your Thoughts Anonymously</h2>
+                <form id="confidence-post-form" class="space-y-5">
+                    <div>
+                        <label for="post-content" class="block text-base font-semibold text-gray-700 mb-2">Your Message:</label>
+                        <textarea id="post-content" rows="5" class="w-full text-base" placeholder="Share your experiences, ask questions, or offer support..."></textarea>
+                    </div>
+                    <div class="text-center mt-6">
+                        <button type="submit" class="btn-primary text-white px-8 py-3.5 rounded-lg shadow-md text-lg font-bold">
+                            Post Anonymously <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Display Posts Section -->
+            <section class="card p-8 animate-pop-in animation-delay-500">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center"><i class="fas fa-comments mr-3"></i> Community Posts</h2>
+                <div id="confidence-posts-container" class="space-y-6">
+                    <p class="text-center text-gray-600">Loading posts...</p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-gray-600 py-5 mt-10 shadow-inner border-t border-gray-200">
+        <div class="container mx-auto text-center max-w-7xl">
+            <p>&copy; 2025 UniVerge. All rights reserved.</p>
+            <p class="mt-2 text-sm">Simplifying paths, empowering futures.</p>
+            <div class="flex justify-center space-x-4 mt-3 text-lg">
+                <a href="#" class="hover:text-indigo-600 transition-colors duration-200"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-indigo-600 transition-colors duration-200"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-indigo-600 transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="/script/script.js"></script>
+</body>
+</html>
