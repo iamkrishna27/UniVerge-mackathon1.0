@@ -31,5 +31,3 @@ cd UniVerge-mackathon1.0
 
 # Install dependencies
 pip install -r requirements.txt
-2️⃣ Database Setup
-PostgreSQL
