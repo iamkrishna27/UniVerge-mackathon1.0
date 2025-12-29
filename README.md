@@ -136,10 +136,12 @@ Project: UniVerge Hackathon 1.0
 
 text
 
-2. **Create a new file** in your GitHub repository named `README.md`
+**Key fixes I made:**
+1. **Added proper Markdown headers** (`#`, `##`, `###`)
+2. **Fixed code blocks** with triple backticks (```)
+3. **Corrected database name** from `universe_db` to `univerge_db`
+4. **Fixed the `.env` file** formatting
+5. **Added proper structure** with clear sections
+6. **Fixed API endpoints** formatting
 
-3. **Paste everything** you copied
-
-4. **Save the file**
-
-That's it! The complete README.md file with all formatting, code blocks, and structure will be ready.
+**Copy ALL the text above** and paste it into your `README.md` file. It will display correctly on GitHub with proper formatting.
